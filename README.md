@@ -28,19 +28,23 @@ Where:
 * value is the expected value for that field
 
 For example, if I got the following simplified rows:
-Title	     Location 	  Description		    Type
+```
+Title           Location        Description                 Type
 ===========================================================================
-Breakfast    Lounge	  Fresh fruits and pastries Session
-Hangout	     Beach	  Have fun		    Subsession of Breakfast
-Lunch	     Price Center Junk food    	   	    Session
-Dinner	     Mamma Linnas Italien handmade pasta    Session
-Networking   Lounge	  Let's meet		    Subsession of Dinner
-
+Breakfast       Lounge          Fresh fruits and pastries   Session
+Hangout         Beach           Have fun                    Subsession of Breakfast
+Lunch           Price Center    Junk food                   Session
+Dinner          Mamma Linnas    Italien handmade pasta      Session
+Networking      Lounge          Let's meet                  Subsession of Dinner
+```
 Then the expected behavior is as follow:
+```
 $> ./lookup_agenda.py location lounge
-Breakfast   Lounge    	  Fresh fruits and pastries Session	  # Returned because its location is lounge 
-Hangout	    Beach	  Have fun		    Subsession    # Returned because its parent session location is lounge
-Networking  Lounge	  Let's meet   	   	    Subsession	  # Returned because its location is lounge
+
+Breakfast   Lounge      Fresh fruits and pastries   Session         # Returned because its location is lounge 
+Hangout     Beach       Have fun                    Subsession      # Returned because its parent session location is lounge
+Networking  Lounge	  Let's meet   	   	    Subsession      # Returned because its location is lounge
+```
 
 Please note:
 * This program looks for sessions and subsessions.
